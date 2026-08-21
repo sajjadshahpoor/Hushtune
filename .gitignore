@@ -1,0 +1,10 @@
+# XcodeGen generates this from project.yml — don't commit it
+*.xcodeproj/
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xcuserstate
+
+# macOS
+.DS_Store
