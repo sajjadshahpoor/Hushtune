@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hushtune — YouTube companion &amp; private browser for iPhone</title>
+<meta name="description" content="Hushtune is an iPhone app for browsing and searching YouTube, plus a general-purpose mobile browser with ad blocking, video downloads, and background audio.">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff3b4e'/%3E%3Cpolygon points='40,30 72,50 40,70' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark">▶</span>
+      Hushtune
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#install">Install</a></li>
+      <li><a href="#releases">Releases</a></li>
+      <li><a href="https://github.com/sajjadshahpoor/Hushtune" target="_blank" rel="noopener">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>YouTube, plus a browser that respects you.</h1>
+    <p class="tagline">
+      Hushtune is an iPhone app for browsing and searching YouTube, and a
+      general-purpose mobile browser with ad blocking, video downloads, and
+      background audio — built entirely on standard iOS frameworks.
+    </p>
+    <div class="cta-row">
+      <a id="download-btn" class="btn btn-primary" href="https://github.com/sajjadshahpoor/Hushtune/releases">
+        <span>⌁</span> Download for iPhone
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/sajjadshahpoor/Hushtune" target="_blank" rel="noopener">
+        View source on GitHub
+      </a>
+    </div>
+    <div>
+      <span class="version-badge" id="version-badge">Checking latest version…</span>
+    </div>
+    <p class="disclaimer">
+      Not distributed on the App Store. Installing on an iPhone requires
+      building it yourself in Xcode, or a signed build published as a
+      GitHub Release. Not affiliated with YouTube or Google.
+    </p>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>What's inside</h2>
+    <p class="section-sub">Four features, each built on a real, documented iOS API — nothing hidden or hacked together.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">▶</div>
+        <h3>YouTube search &amp; play</h3>
+        <p>Search and browse trending videos via YouTube's official Data API, played through YouTube's own embeddable player with a custom Hushtune interface around it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡</div>
+        <h3>Ad &amp; tracker blocking</h3>
+        <p>A built-in browser blocks common ad and tracking domains using Apple's WKContentRuleList API — the same mechanism behind Safari content blockers — plus a pop-up blocker.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭳</div>
+        <h3>Video downloads</h3>
+        <p>Auto-detects direct video file links on the page you're browsing, or accepts a pasted URL, and downloads them for offline playback in-app.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔊</div>
+        <h3>Background audio</h3>
+        <p>A real AVAudioSession background-playback configuration keeps ordinary web media playing when you lock your screen or switch apps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>How to install</h2>
+    <p class="section-sub">Hushtune isn't on the App Store, so getting it onto your iPhone takes one of these paths.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <strong>Get the source or a release</strong>
+          <p>Clone the <a href="https://github.com/sajjadshahpoor/Hushtune" target="_blank" rel="noopener">GitHub repo</a>, or download a build from the Releases section below if one has been published.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <strong>Open it in Xcode on a Mac</strong>
+          <p>Run <code>xcodegen generate</code>, open <code>Hushtune.xcodeproj</code>, and add your own YouTube Data API v3 key in <code>Sources/Config.swift</code>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <strong>Install to your iPhone</strong>
+          <p>Connect your iPhone and hit Run in Xcode to install it directly, or use a signed build via TestFlight / ad-hoc distribution once one is set up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="releases">
+  <div class="wrap">
+    <h2>Releases</h2>
+    <p class="section-sub">Pulled live from GitHub — this list updates automatically whenever a new version is published.</p>
+    <div id="releases-list">
+      <p class="releases-empty">Loading releases…</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      Hushtune is an independent, educational project and is not affiliated
+      with or endorsed by YouTube or Google.
+      <br>
+      <a href="https://github.com/sajjadshahpoor/Hushtune" target="_blank" rel="noopener">github.com/sajjadshahpoor/Hushtune</a>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

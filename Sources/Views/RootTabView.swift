@@ -2,26 +2,42 @@ import SwiftUI
 
 struct RootTabView: View {
     var body: some View {
-        if Config.isAPIKeyConfigured {
-            TabView {
-                NavigationStack {
+        TabView {
+            NavigationStack {
+                if Config.isAPIKeyConfigured {
                     HomeView()
-                }
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
-                }
-
-                NavigationStack {
-                    SearchView()
-                }
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                } else {
+                    MissingAPIKeyView()
                 }
             }
-            .tint(.red)
-        } else {
-            MissingAPIKeyView()
+            .tabItem {
+                Label("Home", systemImage: "house.fill")
+            }
+
+            NavigationStack {
+                if Config.isAPIKeyConfigured {
+                    SearchView()
+                } else {
+                    MissingAPIKeyView()
+                }
+            }
+            .tabItem {
+                Label("Search", systemImage: "magnifyingglass")
+            }
+
+            BrowserView()
+                .tabItem {
+                    Label("Browser", systemImage: "globe")
+                }
+
+            NavigationStack {
+                DownloadsView()
+            }
+            .tabItem {
+                Label("Downloads", systemImage: "arrow.down.circle.fill")
+            }
         }
+        .tint(.red)
     }
 }
 

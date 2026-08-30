@@ -1,5 +1,6 @@
-# XcodeGen generates this from project.yml — don't commit it
+# XcodeGen generates these from project.yml — don't commit them
 *.xcodeproj/
+/Info.plist
 
 # Xcode
 xcuserdata/
