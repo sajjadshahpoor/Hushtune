@@ -1,11 +1,4 @@
-# XcodeGen generates these from project.yml — don't commit them
-*.xcodeproj/
-/Info.plist
-
-# Xcode
-xcuserdata/
-DerivedData/
-*.xcuserstate
+node_modules/
 
 # macOS
 .DS_Store
