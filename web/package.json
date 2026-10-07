@@ -1,0 +1,20 @@
+{
+  "name": "hushtune-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2"
+  },
+  "devDependencies": {
+    "@vite-pwa/assets-generator": "^2.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3",
+    "vite-plugin-pwa": "^2.0.0"
+  }
+}

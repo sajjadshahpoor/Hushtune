@@ -1,0 +1,11 @@
+name = "hushtune-proxy"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Origins allowed to use this proxy. Add your local dev URL while testing,
+# e.g. "https://sajjadshahpoor.github.io,http://localhost:5173".
+ALLOWED_ORIGINS = "https://sajjadshahpoor.github.io"
+# Largest file the proxy will serve (1.5 GB). Very large files may also
+# exceed what Safari can hold in memory on older iPhones.
+MAX_BYTES = "1500000000"

@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/Hushtune/app/sw.js', { scope: '/Hushtune/app/' })})}

@@ -10,6 +10,67 @@ An iOS app with two parts:
    `URLSession`) — the same APIs Safari, Firefox, and Brave use for the same
    features.
 
+There's also a **web app** (`web/` + `proxy/`) that runs on iPhone from the
+Home Screen, with no Mac or Xcode needed — see below.
+
+## Web app (iPhone, no Mac needed)
+
+A Progressive Web App that saves audio and video files to the phone. Paste a
+link to a media file — or to a page that has one — choose **Download video**
+or **Download audio**, then tap **Save to Files / Open in…** to send it to the
+Files app or straight into a player such as VLC.
+
+Same rule as the browser tab: only **direct media files** are supported (a
+real `.mp4`/`.m4a`/`.mp3`/… URL, or one referenced by a page's
+`og:video`/`og:audio`, `<video>`/`<audio>`/`<source>` tags or links).
+Streaming playlists, `blob:`/`data:` URLs and protected players are refused.
+
+- **`web/`** — the app (Vite + TypeScript + `vite-plugin-pwa`). Builds into
+  `docs/app/`, served at `https://sajjadshahpoor.github.io/Hushtune/app/`.
+  "Download audio" on a video extracts the audio track on the device with
+  ffmpeg.wasm (loaded on first use, ~30 MB).
+- **`proxy/`** — a Cloudflare Worker the app downloads through, since
+  browsers can't read files from other sites directly (CORS). It only serves
+  audio/video, only to the origins in `ALLOWED_ORIGINS`, refuses private
+  network addresses, and caps file size (`MAX_BYTES`).
+
+### Setup
+
+1. **Deploy the proxy** (free Cloudflare account):
+   ```sh
+   cd proxy
+   npm install
+   npx wrangler login
+   npm run deploy        # prints https://hushtune-proxy.<you>.workers.dev
+   ```
+2. **Build the app** (optionally bake in the proxy URL):
+   ```sh
+   cd web
+   npm install
+   echo VITE_PROXY_URL=https://hushtune-proxy.<you>.workers.dev > .env.local
+   npm run build         # writes docs/app/
+   ```
+   Commit and push `docs/app/`; GitHub Pages publishes it (see the Pages
+   setup below).
+3. **On the iPhone**, open `https://sajjadshahpoor.github.io/Hushtune/app/`
+   in Safari → Share → **Add to Home Screen**. If you skipped
+   `VITE_PROXY_URL`, paste the proxy URL under **Settings** in the app.
+
+### Local development
+
+```sh
+cd proxy && npm run dev   # proxy on http://127.0.0.1:8787, any origin allowed
+cd web && npm run dev     # app on http://localhost:5173 and your LAN address
+```
+
+### iPhone limitations
+
+- **Keep the app open while downloading.** iOS suspends web apps in the
+  background, and Safari has no background-download API.
+- Downloads are held in memory until saved, so very large files (well over
+  1 GB) can fail on older iPhones. Audio extraction needs roughly 2–3× the
+  video's size in memory.
+
 ## What this is — and isn't
 
 ### YouTube tab

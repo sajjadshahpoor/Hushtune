@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Hushtune" />
+    <title>Hushtune</title>
+    <script type="module" crossorigin src="/Hushtune/app/assets/index-C9cjcDoM.js"></script>
+    <link rel="stylesheet" crossorigin href="/Hushtune/app/assets/index-atMVfQFO.css">
+  <link rel="manifest" href="/Hushtune/app/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/Hushtune/app/registerSW.js"></script>
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="/Hushtune/app/favicon.ico" sizes="48x48">
+<link rel="icon" href="/Hushtune/app/icon.svg" sizes="any" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/Hushtune/app/apple-touch-icon-180x180.png"></head>
+  <body>
+    <main>
+      <header>
+        <h1>Hushtune</h1>
+        <p class="muted">Paste a link to an audio or video file, or a page that has one.</p>
+      </header>
+
+      <form id="probe-form" class="card" autocomplete="off">
+        <label for="url" class="sr-only">Link</label>
+        <div class="row">
+          <input id="url" type="url" inputmode="url" placeholder="https://…" required />
+          <button id="paste" type="button" class="ghost">Paste</button>
+        </div>
+        <button id="find" type="submit" class="primary">Find media</button>
+      </form>
+
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <section id="results" hidden>
+        <h2 id="results-title"></h2>
+        <ul id="files"></ul>
+      </section>
+
+      <section id="progress" class="card" hidden>
+        <p id="progress-label"></p>
+        <progress id="progress-bar" max="1"></progress>
+        <p id="progress-detail" class="muted small"></p>
+        <p class="muted small">Keep Hushtune open until this finishes — iOS pauses web apps in the background.</p>
+        <button id="cancel" type="button" class="ghost">Cancel</button>
+      </section>
+
+      <section id="done" class="card" hidden>
+        <p>Ready: <strong id="done-name"></strong> <span id="done-size" class="muted"></span></p>
+        <button id="save" type="button" class="primary">Save to Files / Open in…</button>
+        <p class="muted small">Choose “Save to Files”, or pick a player app such as VLC from the share sheet.</p>
+      </section>
+
+      <details id="settings">
+        <summary>Settings</summary>
+        <label for="proxy">Proxy URL</label>
+        <input id="proxy" type="url" placeholder="https://hushtune-proxy.example.workers.dev" />
+        <p class="muted small">The Cloudflare Worker from the <code>proxy/</code> folder. Downloads go through it because browsers can’t read files from other sites directly.</p>
+      </details>
+
+      <footer class="muted small">
+        Only download files you have the right to save. Streaming services and protected players aren’t supported.
+      </footer>
+    </main>
+  </body>
+</html>
