@@ -45,15 +45,14 @@ Windows, macOS or Linux.
    ```
    If your site isn't `https://sajjadshahpoor.github.io`, change
    `ALLOWED_ORIGINS` in `proxy/wrangler.toml` first.
-2. **Build the app** (optionally bake in the proxy URL):
+2. **Build the app** — first put your proxy URL in `web/.env.production`
+   (`VITE_PROXY_URL=…`), then:
    ```sh
    cd web
    npm install
-   echo VITE_PROXY_URL=https://hushtune-proxy.<you>.workers.dev > .env.local
    npm run build         # writes docs/app/
    ```
-   If you skip `VITE_PROXY_URL`, paste the proxy URL under **Settings** in the
-   app instead.
+   The URL can also be overridden per device under **Settings** in the app.
 3. **Publish:** commit and push. On GitHub, under **Settings → Pages**, set the
    source to **Deploy from a branch**, branch **main**, folder **/docs**. The
    landing page appears at `https://<user>.github.io/Hushtune/` and the app at
